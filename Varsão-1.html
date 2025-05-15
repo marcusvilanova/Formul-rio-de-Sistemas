@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Novo Colaborador</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f7fa;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    
+    .form-container {
+      width: 100%;
+      max-width: 800px;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    h2 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #3498db;
+    }
+    
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #34495e;
+    }
+    
+    input[type="text"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 15px;
+      transition: border 0.3s;
+    }
+    
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    select:focus {
+      border-color: #3498db;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+    
+    fieldset {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 25px;
+    }
+    
+    legend {
+      padding: 0 15px;
+      font-weight: 700;
+      color: #2c3e50;
+      font-size: 16px;
+    }
+    
+    .sistema-extra {
+      margin-left: 25px;
+      padding: 15px;
+      border-left: 3px solid #3498db;
+      display: none;
+      background-color: #f8fafc;
+      border-radius: 6px;
+      margin-top: 15px;
+    }
+    
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 25px;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+    
+    button:hover {
+      background-color: #2980b9;
+    }
+    
+    button:disabled {
+      background-color: #95a5a6;
+      cursor: not-allowed;
+    }
+    
+    #mensagem {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: 500;
+      display: none;
+    }
+    
+    .required:after {
+      content: " *";
+      color: #e74c3c;
+    }
+    
+    .checkbox-group {
+      margin-top: 10px;
+    }
+    
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      margin-top: 8px;
+      cursor: pointer;
+      color: #2c3e50;
+    }
+    
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-right: 12px;
+      cursor: pointer;
+    }
+    
+    .aprovadores-list {
+      margin-left: 20px;
+      margin-top: 15px;
+    }
+    
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
+    @media (max-width: 768px) {
+      .form-container {
+        padding: 20px;
+      }
+      
+      input[type="text"],
+      input[type="date"],
+      select {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Cadastro de Novo Colaborador</h2>
+
+    <form id="formularioColaborador">
+      <label class="required">
+        Responsável pelo preenchimento:
+        <input type="text" name="responsavel" required>
+      </label>
+
+      <label class="required">
+        Nome do colaborador:
+        <input type="text" name="nomeColaborador" required>
+      </label>
+
+      <label class="required">
+        Data de nascimento:
+        <input type="date" name="dataNascimento" required>
+      </label>
+
+      <label class="required">
+        Cargo:
+        <select name="cargo" required>
+          <option value="">Selecione</option>
+          <option>Assistente Administrativo</option>
+          <option>Gerente</option>
+          <option>Supervisor</option>
+          <option>Analista Pedagógico</option>
+          <option>Outro</option>
+        </select>
+      </label>
+
+      <label class="required">
+        Unidade:
+        <select name="unidade" required>
+          <option value="">Selecione</option>
+          <option>Sede</option>
+          <option>Brasilândia</option>
+          <option>Brasilândia Núcleo Taipas</option>
+          <option>Capão Redondo - CPR</option>
+          <option>Diadema - DDM</option>
+          <option>Iguape - IGP</option>
+          <option>Heliópolis - HLP</option>
+          <option>Jaçanã - JCN</option>
+          <option>Jardim São Luís - JSL</option>
+          <option>Osasco - OSC</option>
+          <option>Vila Nova Cachoeirinha - VNC</option>
+          <option>Folia</option>
+          <option>Núcleo Luz</option>
+          <option>Núcleo de Moda</option>
+          <option>Casa das Rosas - CRO</option>
+          <option>Casa Guilherme de Almeida - CGA</option>
+          <option>Casa Mário de Andrade - CMA</option>
+        </select>
+      </label>
+
+      <label class="required">
+        Motivo:
+        <select name="motivo" required>
+          <option value="">Selecione</option>
+          <option>Admissão (Criação de e-mail / Cadastro nos sistemas)</option>
+          <option>Movimentação (Alteração do e-mail / Cadastro nos sistemas)</option>
+        </select>
+      </label>
+
+      <label>
+        Indicação para criação do e-mail:
+        <input type="text" name="indicacaoEmail" placeholder="Nome da pessoa que indicou">
+      </label>
+
+      <fieldset>
+        <legend>Acessos (Plataformas e Sistemas)</legend>
+
+        <label><input type="checkbox" name="acessos" value="Education"> Education</label>
+        <div class="sistema-extra" id="educationExtra">
+          <label>Detalhar atividades: <input type="text" name="educationDetalhes" placeholder="Descreva as atividades"></label>
+          <label>Usuário terá algum tipo de aprovação?
+            <select name="educationAprovacao">
+              <option value="">Selecione</option>
+              <option>Sim</option>
+              <option>Não</option>
+            </select>
+          </label>
+          <div id="educationAprovacaoExtra" style="display: none;">
+            <label>Aprovar Atividades:</label>
+            <div class="aprovadores-list">
+              <div class="checkbox-group">
+                <label><input type="checkbox" name="educationNivel1" value="Sim"> Nível 1</label>
+              </div>
+              <div class="checkbox-group">
+                <label><input type="checkbox" name="educationNivel2" value="Sim"> Nível 2</label>
+              </div>
+              <div class="checkbox-group">
+                <label><input type="checkbox" name="educationNivel3" value="Sim"> Nível 3</label>
+              </div>
+            </div>
+            <label>CPF: <input type="text" name="educationCpf" placeholder="CPF do colaborador"></label>
+          </div>
+        </div>
+
+        <label><input type="checkbox" name="acessos" value="Uber"> Uber</label>
+        <div class="sistema-extra" id="uberExtra">
+          <label>Centro de Custo: <input type="text" name="uberCentroCusto" placeholder="Código do centro de custo"></label>
+          <label>Valor: <input type="text" name="uberValor" placeholder="Valor mensal estimado"></label>
+          <label>Matrícula: <input type="text" name="uberMatricula" placeholder="Matrícula do colaborador"></label>
+          <label>Celular: <input type="text" name="uberCelular" placeholder="(DDD) 99999-9999"></label>
+          <label>Divisão do centro de custo: <input type="text" name="uberDivisao" placeholder="Departamento/Área"></label>
+        </div>
+
+        <label><input type="checkbox" name="acessos" value="Taxi"> Taxi</label>
+        <div class="sistema-extra" id="taxiExtra">
+          <label>Centro de Custo: <input type="text" name="taxiCentroCusto" placeholder="Código do centro de custo"></label>
+          <label>Limite Mensal: <input type="text" name="taxiLimite" placeholder="Valor limite mensal"></label>
+          <label>Matrícula: <input type="text" name="taxiMatricula" placeholder="Matrícula do colaborador"></label>
+          <label>Celular: <input type="text" name="taxiCelular" placeholder="(DDD) 99999-9999"></label>
+          <label>Divisão do centro de custo: <input type="text" name="taxiDivisao" placeholder="Departamento/Área"></label>
+        </div>
+
+        <label><input type="checkbox" name="acessos" value="Bitrix"> Bitrix</label>
+        <div class="sistema-extra" id="bitrixExtra">
+          <p>Será criado acesso padrão ao sistema Bitrix</p>
+        </div>
+
+        <label><input type="checkbox" name="acessos" value="SmartSheet"> SmartSheet</label>
+        <div class="sistema-extra" id="smartsheetExtra">
+          <p>Será criado acesso padrão ao sistema SmartSheet</p>
+        </div>
+
+        <label><input type="checkbox" name="acessos" value="ZapSing"> ZapSing</label>
+        <div class="sistema-extra" id="zapsingExtra">
+          <label>Área:
+            <select name="zapsingArea">
+              <option value="">Selecione</option>
+              <option>Administrativo</option>
+              <option>Programação</option>
+              <option>Corporativo</option>
+            </select>
+          </label>
+        </div>
+
+        <label><input type="checkbox" name="acessos" value="Controle de Estoque"> Controle de Estoque</label>
+        <div class="sistema-extra" id="controleExtra">
+          <p>Será criado acesso padrão ao sistema de Controle de Estoque</p>
+        </div>
+
+        <label><input type="checkbox" name="acessos" value="OTK"> OTK</label>
+        <div class="sistema-extra" id="otkExtra">
+          <label>Tipo de Usuário:
+            <select name="otkTipoUsuario">
+              <option value="">Selecione</option>
+              <option>Gerente</option>
+              <option>Supervisor</option>
+              <option>Administrativo</option>
+            </select>
+          </label>
+          <label>Requisitante (Gerente ou Supervisor): <input type="text" name="otkRequisitante" placeholder="Nome completo"></label>
+          <label>Usuário (quem insere requisição): <input type="text" name="otkUsuarioFinal" placeholder="Nome completo"></label>
+        </div>
+
+        <label><input type="checkbox" name="acessos" value="Pastas Drives Compartilhados"> Pastas Drives Compartilhados</label>
+        <div class="sistema-extra" id="pastasExtra">
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="pasta1" value="Sim"> Pasta 1</label>
+          </div>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="pasta2" value="Sim"> Pasta 2</label>
+          </div>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="pasta3" value="Sim"> Pasta 3</label>
+          </div>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="pasta4" value="Sim"> Pasta 4</label>
+          </div>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="pasta5" value="Sim"> Pasta 5</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <button type="submit">Enviar Solicitação</button>
+    </form>
+
+    <div id="mensagem"></div>
+  </div>
+
+  <script>
+    // Mostrar/ocultar campos extras quando sistemas são selecionados
+    document.querySelectorAll('input[type="checkbox"][name="acessos"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        const id = this.value.toLowerCase().replace(/ /g, '') + 'Extra';
+        const div = document.getElementById(id);
+        if (div) {
+          div.style.display = this.checked ? 'block' : 'none';
+        }
+      });
+    });
+
+    // Mostrar/ocultar campos de aprovação do Education
+    document.querySelector('[name="educationAprovacao"]').addEventListener('change', function() {
+      const aprovacaoExtra = document.getElementById('educationAprovacaoExtra');
+      aprovacaoExtra.style.display = this.value === 'Sim' ? 'block' : 'none';
+    });
+
+    // Função para coletar dados extras de forma robusta
+    function coletarDadosExtras() {
+      const dadosExtras = {};
+      
+      document.querySelectorAll('.sistema-extra').forEach(div => {
+        if (div.style.display !== 'none') {
+          // Campos de texto, selects e checkboxes
+          div.querySelectorAll('input[type="text"], input[type="date"], select, input[type="checkbox"]').forEach(input => {
+            if (input.type === 'checkbox') {
+              dadosExtras[input.name] = input.checked ? 'Sim' : 'Não';
+            } else if ((input.value && input.value.trim() !== '') || input.tagName === 'SELECT') {
+              dadosExtras[input.name] = input.value;
+            }
+          });
+        }
+      });
+      
+      return dadosExtras;
+    }
+
+    // Função de envio com timeout e tratamento de erros
+    async function enviarParaGoogleAppsScript(dados) {
+      const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbxGwZfSE-Z1QngzELFzHQLnls3_oYf0ylW6tFty_SYJSMtvS_VDebr-hz25w4ZahdgU/exec';
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 30000);
+      
+      try {
+        const response = await fetch(URL_SCRIPT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(dados),
+          signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        
+        // Verifica se a resposta é JSON válido
+        const textResponse = await response.text();
+        try {
+          return JSON.parse(textResponse);
+        } catch {
+          return { status: "success", message: textResponse };
+        }
+      } catch (error) {
+        clearTimeout(timeoutId);
+        console.error("Erro na requisição:", error);
+        return { 
+          status: "error",
+          message: error.name === 'AbortError' ? "Tempo excedido (30s)" : "Falha na conexão com o servidor"
+        };
+      }
+    }
+
+    // Lógica principal de envio do formulário
+    document.getElementById('formularioColaborador').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const form = event.target;
+      const submitButton = form.querySelector('button[type="submit"]');
+      const mensagem = document.getElementById('mensagem');
+      
+      // Configura estado de envio
+      submitButton.disabled = true;
+      submitButton.textContent = 'Enviando...';
+      mensagem.textContent = '';
+      mensagem.style.display = 'none';
+      mensagem.className = '';
+
+      try {
+        // Coleta dados básicos do formulário
+        const formData = new FormData(form);
+        const acessosSelecionados = Array.from(form.querySelectorAll('input[name="acessos"]:checked'))
+          .map(cb => cb.value);
+        
+        // Coleta dados extras dos sistemas
+        const dadosExtras = coletarDadosExtras();
+        
+        // Prepara objeto final para envio
+        const dadosParaEnvio = {
+          responsavel: formData.get('responsavel') || '',
+          nomeColaborador: formData.get('nomeColaborador') || '',
+          dataNascimento: formData.get('dataNascimento') || '',
+          cargo: formData.get('cargo') || '',
+          unidade: formData.get('unidade') || '',
+          motivo: formData.get('motivo') || '',
+          indicacaoEmail: formData.get('indicacaoEmail') || '',
+          acessos: acessosSelecionados.join(', ') || '',
+          extras: Object.keys(dadosExtras).length > 0 ? dadosExtras : undefined
+        };
+
+        console.log("Dados preparados para envio:", dadosParaEnvio);
+        
+        // Validação básica dos campos obrigatórios
+        if (!dadosParaEnvio.nomeColaborador || !dadosParaEnvio.responsavel) {
+          throw new Error("Nome do colaborador e responsável são obrigatórios");
+        }
+
+        // Envia os dados para o Google Apps Script
+        const resultado = await enviarParaGoogleAppsScript(dadosParaEnvio);
+        
+        // Processa a resposta
+        mensagem.style.display = 'block';
+        if (resultado.status === "success") {
+          mensagem.textContent = '✅ ' + (resultado.message || "Cadastro realizado com sucesso!");
+          mensagem.classList.add('success');
+          
+          // Reseta o formulário após sucesso
+          form.reset();
+          document.querySelectorAll('.sistema-extra').forEach(div => {
+            div.style.display = 'none';
+          });
+          document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.checked = false;
+          });
+        } else {
+          throw new Error(resultado.message || "Erro ao processar os dados");
+        }
+      } catch (erro) {
+        console.error("Erro no processamento:", erro);
+        mensagem.style.display = 'block';
+        mensagem.textContent = '❌ ' + erro.message;
+        mensagem.classList.add('error');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Enviar Solicitação';
+      }
+    });
+  </script>
+</body>
+</html>
