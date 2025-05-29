@@ -23,7 +23,21 @@
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+     
+          
     }
+
+    .logo-container {
+  text-align: left;
+  padding: 10px 20px;
+}
+
+.logo-container img {
+  width: 120px;
+  height: auto;
+  display: block;
+}
+
     
     h2 {
       color: #2c3e50;
@@ -173,6 +187,9 @@
   </style>
 </head>
 <body>
+  <div class="logo-container">
+  <img src="https://i.imgur.com/CzHRc2Q.png" alt="Logo da Empresa">
+</div>
   <div class="form-container">
     <h2>Cadastro de Novo Colaborador</h2>
 
@@ -278,8 +295,7 @@
           <label>Valor: <input type="text" name="uberValor" placeholder="Valor mensal estimado"></label>
           <label>Matrícula: <input type="text" name="uberMatricula" placeholder="Matrícula do colaborador"></label>
           <label>Celular: <input type="text" name="uberCelular" placeholder="(DDD) 99999-9999"></label>
-          <label>Divisão do centro de custo: <input type="text" name="uberDivisao" placeholder="Departamento/Área"></label>
-        </div>
+                  </div>
 
         <label><input type="checkbox" name="acessos" value="Taxi"> Taxi</label>
         <div class="sistema-extra" id="taxiExtra">
@@ -318,18 +334,10 @@
         </div>
 
         <label><input type="checkbox" name="acessos" value="OTK"> OTK</label>
-        <div class="sistema-extra" id="otkExtra">
-          <label>Tipo de Usuário:
-            <select name="otkTipoUsuario">
-              <option value="">Selecione</option>
-              <option>Gerente</option>
-              <option>Supervisor</option>
-              <option>Administrativo</option>
-            </select>
-          </label>
-          <label>Requisitante (Gerente ou Supervisor): <input type="text" name="otkRequisitante" placeholder="Nome completo"></label>
-          <label>Usuário (quem insere requisição): <input type="text" name="otkUsuarioFinal" placeholder="Nome completo"></label>
-        </div>
+<div class="sistema-extra" id="otkExtra">
+  <label>Centro de Custo: <input type="text" name="otkCentroCusto" placeholder="Código do centro de custo"></label>
+</div>
+
 
         <label><input type="checkbox" name="acessos" value="Pastas Drives Compartilhados"> Pastas Drives Compartilhados</label>
         <div class="sistema-extra" id="pastasExtra">
@@ -397,7 +405,7 @@
 
     // Função de envio com timeout e tratamento de erros
     async function enviarParaGoogleAppsScript(dados) {
-      const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycby0UNWY8N7164B_-x8Q_wLMdS4pJMLR2acejRRPEWSyyA_v0tkGzwV4FANDlER9uy_E/exec'; // Substitua pela URL do seu App Script implantado como Aplicativo da Web
+      const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbzRTD5N_PTabdWA33hUi0AlVU4o9_yEOamAFcnIXebV8ARSVBee1wDRXX5JXP7s5zS1FQ/exec'; // Substitua pela URL do seu App Script implantado como Aplicativo da Web
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 30000);
       
@@ -426,7 +434,7 @@
         }
       } catch (error) {
         clearTimeout(timeoutId);
-        console.error("Erro na requisição:", error);
+        console.error("E isição:", error);
         return { 
           status: "error",
           message: error.name === 'AbortError' ? "Tempo excedido (30s)" : "Falha na conexão com o servidor"
@@ -510,7 +518,6 @@
   </script>
 </body>
 </html>
-
 
 
 
